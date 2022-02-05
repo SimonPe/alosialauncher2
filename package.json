@@ -1,0 +1,89 @@
+{
+  "name": "Alosia-Launcher",
+  "version": "2.0.4",
+  "productName": "Alosia Launcher",
+  "description": "Alosia Launcher",
+  "main": "app/index.html",
+  "author": "Furio360",
+  "window": {
+    "title": "Alosia update",
+    "width": 400,
+    "height": 500,
+    "frame": false,
+    "resizable": false,
+    "position": "center",
+    "icon": "app/assets/images/icons/icon.png"
+  },
+  "engines": {
+    "node": "16.x.x"
+  },
+  "chromium-args": "--enable-logging --v=1 --disable-gpu --mixed-content",
+  "url": "https://alosia.tk/private",
+  "user": "",
+  "webkit": {
+    "plugin": true
+  },
+  "scripts": {
+    "start": "run --64 --mirror https://dl.nwjs.io/ .",
+    "build:win": "npm install && build --win --x64 --mirror https://dl.nwjs.io/ .",
+    "build:mac": "npm install && build --mac --x64 --mirror https://dl.nwjs.io/ .",
+    "build:linux": "npm install && build --linux --x64 --mirror https://dl.nwjs.io/ .",
+    "build:all": "npm run build:linux && npm run build:mac && npm run build:win",
+    "dev": "nodemon --exec npm start"
+  },
+  "license": "CC0",
+  "build": {
+    "appId": "Alosia Launcher",
+    "nwVersion": "0.55.0",
+    "packed": true,
+    "targets": [
+      "zip",
+      "nsis7z"
+    ],
+    "strippedProperties": [
+      "build"
+    ],
+    "excludes": [
+      ".gitignore",
+      "nodemon.json",
+      "tool.bat",
+      "web/**",
+      "AppData/**",
+      "node-v*/**",
+      "test/**",
+      "package-lock.json",
+      "README.md"
+    ],
+    "outputPattern": "${NAME}-${PLATFORM}",
+    "win": {
+      "productName": "Alosia Launcher",
+      "companyName": "Alosia Launcher",
+      "copyright": "copyright",
+      "icon": "./app/assets/images/icons/alosia.ico"
+    },
+    "mac": {
+      "displayName": "Alosia-Launcher",
+      "copyright": "copyright",
+      "plistStrings": {
+        "CFBundleIdentifier": "Alosia-Launcher"
+      }
+    },
+    "nsis": {
+      "installDirectory": "$LOCALAPPDATA\\Programs\\${_COMPANYNAME}",
+      "diffUpdaters": false
+    }
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "nwjs-builder-luuxis": "^1.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luuxis/Uzurion-Launcher.git"
+  },
+  "dependencies": {
+    "minecraft-java-core": "^1.1.5-alpha.4",
+    "msmc": "^3.0.2",
+    "nw-autoupdater-luuxis": "^1.1.6"
+  }
+}
